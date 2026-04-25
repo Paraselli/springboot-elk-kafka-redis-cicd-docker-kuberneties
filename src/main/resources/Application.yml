@@ -1,1 +1,34 @@
+server:
+  port: 8080
 
+spring:
+  application:
+    name: springboot-elk-kafka-redis-cicd-docker-kubernetes
+
+  redis:
+    host: localhost
+    port: 6379
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: demo-group
+      auto-offset-reset: earliest
+    producer:
+      acks: all
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,loggers
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: INFO
+    org.apache.kafka: INFO
+    org.springframework.data.redis: INFO
